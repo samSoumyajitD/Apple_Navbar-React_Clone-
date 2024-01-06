@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header'; // Adjust the path based on your project structure
+import Header from './Header'; 
 
 const App = () => {
   return (
