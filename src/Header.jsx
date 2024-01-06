@@ -1,5 +1,6 @@
 // ... (import statements)
 import React, { useState } from 'react';
+import 'App.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faSearchengin, faShoppingBag, faBars, faTimes, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faApple as faAppleBrands } from '@fortawesome/free-brands-svg-icons';
