@@ -1,38 +1,438 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  width: 100%;
+  background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+header {
+background: rgba(39, 36, 36, 0.63);
+backdrop-filter: blur(9.4px);
+-webkit-backdrop-filter: blur(9.4px);
+color: #F5F5F5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  opacity:.9;
+  font-size: 16px;  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* -------------------------------------Nav Item CSS------------------------------- */
+.menu,.nav-item,.user-help { 
+  display: flex;   
+}
+
+.he {
+  display: block;
+  border: none;
+  background: transparent;
+  color: #F5F5F5;
+  outline: none;
+  font-size: 10px;
+  cursor: pointer;
+  z-index: 2;
+  text-align: center;
+  width: 3.5rem;
+  height: 40px;
+}
+
+.apple,.bag,.ser{
+  padding: 0 1rem;
+  z-index: 2;
+}
+.menu-list {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #000;
+  font-size: 1rem;
+  padding-top: 5%;
+  padding-right: 25%;
+  padding-bottom: 10%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+}
+.nav-li{
+  display: grid;
+  padding-left: 6rem;
+  
+}
+.menu-list li {
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+
+.heading{
+
+  color: #696161;
+  font-size: 12px;
+}
+.cont1{
+  padding-top: 1rem;
+  line-height: 200%;
+  display: grid;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.cont2,.cont3{
+  position: absolute;
+  padding-top: 2rem;
+  display: grid;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 200%;
+}
+/* -------------------------------------Nav Item CSS ENDS------------------------------- */
+/* --------common css meunu search bag---------- */
+.menu.opened .menu-list,.bag_menu.opened .bag_menu-list,.search_menu.opened .search_menu-list  {
+  transform: translateY(0);
+}
+/* --------common css meunu search bag end---------- */
+
+/* --------------------------------------Search Bar & Bag CSS-------------------------------------------- */
+
+.bag_menu button,.search_menu button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.bag_menu,.search_menu {
+  display: flex;
+}
+.bag_menu-list,.search_menu-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  list-style: none;
+  display: flex;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+  opacity: 1;
+  
+}
+.bag_menu-list{
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
+.bag_menu.opened button,.search_menu.opened button {
+  color: #fff;
+}
+.search-section{
+padding-top: 5%;
+padding-bottom: 10%;
+}
+.wrapper .search-input {
+width: 100%;
+position: relative;
+}
+.search-input input {
+background-color: transparent;
+color: #efe4e4;
+width: 750px;
+outline: none;
+border: none;
+padding: .5rem;
+padding-left: 2.5rem;
+font-size: 18px;
+}
+.search-input input::placeholder {
+color: #999; /* Change the color to your preferred value */
+}
+.search-input .autocom-box {
+padding-top: .2 rem;
+opacity: 0;
+pointer-events: none;
+max-height: 280px;
+overflow-y: auto;
+}
+.search-input.active .autocom-box {
+opacity: 0;
+pointer-events: auto;
+transition: opacity 0.2s ease-in-out;
+}
+.search-input.active .autocom-box {
+opacity: 1;
+pointer-events: auto;
+transition-delay: 0.2s;
+}
+.quick-links h2,.autocom-box .heading {
+color: #fff;
+font-size: .9rem;
+font-weight: 400;
+}
+.autocom-box li {
+list-style: none;
+display: none;
+width: 100%;
+cursor: default;
+padding: .2rem;
+font-size: .9rem;
+}
+.quick-links li::before,.autocom-box li::before{
+content: "→";
+margin-right: 0.5em;
+}
+.search-input.active .autocom-box li {
+color: #fff;
+display: block;
+}
+.autocom-box li:hover {
+opacity: .5;
+color: #fff;
+}
+.search-input .icon {
+position: absolute;
+padding-left: 1rem;
+top: 0px;
+width: 100%;
+text-align:left;
+font-size: 20px;
+color: #fff;
+cursor: pointer;
+}
+.quick-links{
+list-style-type: none;
+padding-top: 1rem;
+font-size: .9rem;
+color: #fff;
+}
+.quick-links li{
+padding: .2rem;
+}
+/* --------------------------------------Search Bar & Bag CSS ENDS-------------------------------------------- */
+
+
+
+.ham_menu{
+position: fixed;
+top: 0;
+right:  0;
+}
+
+.store_menu,.ham_menu {
+display: flex;
+}
+
+.ham_menu .m_ham {
+
+
+display: block;
+width: 40px;
+height: 40px;
+border: none;
+background: transparent;
+color: #fff;
+outline: none;
+font-size: 1.7em;
+cursor: pointer;
+z-index: 2;
+}
+
+.ham_menu i.fa-xmark,
+.ham_menu.opened i.fa-bars {
+display: none;
+}
+
+.ham_menu.opened i.fa-xmark,
+.ham_menu i.fa-bars {
+display: block;
+animation: enter 0.8s;
+}
+
+@keyframes enter {
+0% {
+    opacity: 0;
+}
+
+100% {
+    opacity: 1;
+}
+}
+
+.ham_menu-list {
+list-style:none ; 
+position: fixed;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+color:#fff;
+background-color: #000;
+font-size: 20px;
+font-weight: 600;
+padding-top: 3rem;
+padding-left: 4rem;
+flex-direction: column;
+align-items: flex-start;
+display: flex;
+transform: translateY(-100%);
+transition: transform 0.5s;
+
+
+}
+
+.ham_menu.opened .ham_menu-list {
+transform: translateY(0);
+}
+
+.ham_menu.opened .m_ham {
+color: #fff;
+}
+/* ------nav bar end---- */
+
+
+
+.store_container1,.store_container{
+list-style: none;
+}
+.store_container1{
+padding-top: 2%;
+}
+.store_container li{
+padding: 10px 0;
+}
+
+.store_container1_heading{
+padding: 10% 0;
+font-weight: 300;
+color: #7b7575;
+font-size: 16px;
+
+}
+.store_container1_content li{
+padding: 10px 0;
+}
+.store_container1_content{
+font-weight: 300;
+color: #fff;
+font-size: 16px;
+
+}
+.ham_button{
+margin-top: 1rem;
+border: none;
+background: transparent;
+color: #fff;
+outline: none;
+font-size: 1.5rem;
+font-weight: 600;
+cursor: pointer;
+z-index: 4;
+}
+
+.ham_item-list {
+list-style:none ; 
+position: fixed;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+color:#fff;
+background-color: #000;
+font-size: 20px;
+font-weight: 600;
+padding-top: 3rem;
+padding-left: 4rem;
+flex-direction: column;
+align-items: flex-start;
+display: flex;
+transform: translateY(-100%);
+transition: transform 0.5s;
+z-index: 6;
+
+
+}
+
+
+.ham_item.opened .ham_item-list {
+transform: translateY(0);
+}
+
+.back{
+position: fixed;
+left: 0;
+top: 0;
+display: block;
+width: 40px;
+height: 40px;
+border: none;
+background: transparent;
+color: #fff;
+outline: none;
+font-size: 1.5em;
+cursor: pointer;
+
+}
+.ham_menu{
+display: none;
+}
+@media (max-width:820px){
+header{
+  justify-content: space-between;
+}
+.ham_menu{
+  display: flex;
+}
+.user-help{
+padding-right: 40px;
+}
+.nav-item{
+  display: none;
+}
+.search-input input {
+ 
+  width: 100%;
+ 
+  padding: .5rem;
+  padding-left: 2.5rem;
+  font-size: 16px;
+}
+.search-section{
+padding-top: 20%;
+
+
+}
+.bag_menu-list{
+padding-top: 20%;
+padding-bottom: 20%;
+}
+.search_menu.opened{
+z-index: 10;
+}
+.bag_menu.opened{
+z-index: 10;
+}
+.quick-links{
+padding-top: 3rem;
+}
 }
